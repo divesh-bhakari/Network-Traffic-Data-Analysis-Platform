@@ -1,0 +1,12 @@
+packetlens/
+├── frontend/
+│   └── index.html          ← frotn end
+├── backend/
+│   ├── app.py              ← Flask server
+│   ├── parser.py           ← Scapy PCAP parser
+│   ├── cleaner.py          ← Pandas cleaning pipeline
+│   ├── eda.py              ← EDA + chart generation
+│   ├── analyzer.py         ← ML anomaly detection
+│   └── ai_interpreter.py   ← Claude API integration
+├── requirements.txt
+└── README.md

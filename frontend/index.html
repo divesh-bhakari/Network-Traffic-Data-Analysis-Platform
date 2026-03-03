@@ -1,65 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>NetPeek</title>
-    <style>
-        body{
-            margin:0;
-            font-family: Arial, sans-serif;
-            background:#f4f6f8;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            height:100vh;
-        }
-        .card{
-            background:#fff;
-            padding:30px;
-            width:320px;
-            text-align:center;
-            border-radius:8px;
-            box-shadow:0 4px 10px rgba(0,0,0,0.08);
-        }
-        h2{ margin-bottom:20px; }
-        input{
-            margin:15px 0;
-        }
-        button{
-            padding:10px 20px;
-            border:none;
-            background:#111;
-            color:#fff;
-            cursor:pointer;
-            border-radius:4px;
-        }
-        button:hover{
-            opacity:0.85;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Packet Capture Data Analysis Platform</title>
+
+<style>
+body{
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    background:#0f172a;
+    color:white;
+}
+
+/* Top Navbar */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 40px;
+    background:#111827;
+    border-bottom:1px solid #1f2937;
+}
+
+.logo{
+    font-size:18px;
+    font-weight:600;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#9ca3af;
+    margin-left:20px;
+    font-size:14px;
+}
+
+.nav-links a:hover{
+    color:#06b6d4;
+}
+
+/* Center Upload Section */
+.container{
+    height:85vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.upload-box{
+    border:2px dashed #334155;
+    padding:50px;
+    border-radius:12px;
+    text-align:center;
+    width:350px;
+    background:#111827;
+}
+
+.upload-box h2{
+    margin-bottom:20px;
+}
+
+input[type="file"]{
+    margin:15px 0;
+    color:white;
+}
+
+button{
+    padding:10px 25px;
+    border:none;
+    background:#06b6d4;
+    color:black;
+    font-weight:600;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+button:hover{
+    opacity:0.9;
+}
+</style>
 </head>
+
 <body>
 
-<div class="card">
-    <h2>NetPeek Analyzer</h2>
-    <input type="file" id="pcapFile">
-    <br>
-    <button onclick="startScan()">Start Scan</button>
-    <p id="status"></p>
+<!-- Navbar -->
+<div class="navbar">
+    <div class="logo">Packet Capture Data Analysis Platform</div>
+    <div class="nav-links">
+        <a href="data_cleaning.html">Data Cleaning</a>
+        <a href="eda.html">EDA</a>
+        <a href="data_analysis.html">Data Analysis</a>
+        <a href="ai_analysis.html">AI Analysis</a>
+        <a href="visualization.html">Visualization</a>
+        <a href="interpretation.html">Interpretation</a>
+    </div>
 </div>
 
-<script>
-    function startScan(){
-        const file = document.getElementById("pcapFile").files[0];
-        const status = document.getElementById("status");
-
-        if(!file){
-            status.innerText = "Please upload a PCAP file.";
-            return;
-        }
-
-        status.innerText = "Scanning " + file.name + "...";
-    }
-</script>
+<!-- Center Upload -->
+<div class="container">
+    <div class="upload-box">
+        <h2>Upload PCAP File</h2>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="pcap_file" accept=".pcap,.pcapng" required>
+            <br>
+            <button type="submit">Start Analysis</button>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>

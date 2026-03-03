@@ -9,84 +9,93 @@
 body{
     margin:0;
     font-family: 'Segoe UI', sans-serif;
-    background:#0f172a;
-    color:white;
+    background:#f8f9fa;
+    color:#111;
 }
 
-/* Top Navbar */
-.navbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:18px 40px;
-    background:#111827;
-    border-bottom:1px solid #1f2937;
-}
-
-.logo{
-    font-size:18px;
+/* Top Title */
+.header{
+    padding:25px 40px;
+    font-size:22px;
     font-weight:600;
 }
 
-.nav-links a{
+/* Layout */
+.layout{
+    display:flex;
+    height:90vh;
+}
+
+/* Sidebar */
+.sidebar{
+    width:220px;
+    padding:30px 20px;
+    border-right:1px solid black;
+    box-shadow:2px 0 4px rgba(0,0,0,0.05);
+}
+
+.sidebar a{
+    display:block;
     text-decoration:none;
-    color:#9ca3af;
-    margin-left:20px;
+    color:#111;
+    padding:10px 0;
     font-size:14px;
 }
 
-.nav-links a:hover{
-    color:#06b6d4;
+.sidebar a:hover{
+    padding-left:5px;
 }
 
-/* Center Upload Section */
-.container{
-    height:85vh;
+/* Main Content */
+.main{
+    flex:1;
     display:flex;
     justify-content:center;
     align-items:center;
 }
 
+/* Upload Box */
 .upload-box{
-    border:2px dashed #334155;
+    border:1px solid black;
     padding:50px;
-    border-radius:12px;
-    text-align:center;
     width:350px;
-    background:#111827;
+    text-align:center;
+    box-shadow:0 4px 8px rgba(0,0,0,0.08);
+    background:white;
 }
 
 .upload-box h2{
     margin-bottom:20px;
+    font-weight:500;
 }
 
 input[type="file"]{
     margin:15px 0;
-    color:white;
 }
 
 button{
-    padding:10px 25px;
-    border:none;
-    background:#06b6d4;
-    color:black;
-    font-weight:600;
-    border-radius:6px;
+    padding:8px 20px;
+    border:1px solid black;
+    background:white;
     cursor:pointer;
 }
 
 button:hover{
-    opacity:0.9;
+    background:#f1f1f1;
 }
 </style>
 </head>
 
 <body>
 
-<!-- Navbar -->
-<div class="navbar">
-    <div class="logo">Packet Capture Data Analysis Platform</div>
-    <div class="nav-links">
+<div class="header">
+    Packet Capture Data Analysis Platform
+</div>
+
+<div class="layout">
+
+    <!-- Vertical Navigation -->
+    <div class="sidebar">
         <a href="data_cleaning.html">Data Cleaning</a>
         <a href="eda.html">EDA</a>
         <a href="data_analysis.html">Data Analysis</a>
@@ -94,18 +103,19 @@ button:hover{
         <a href="visualization.html">Visualization</a>
         <a href="interpretation.html">Interpretation</a>
     </div>
-</div>
 
-<!-- Center Upload -->
-<div class="container">
-    <div class="upload-box">
-        <h2>Upload PCAP File</h2>
-        <form action="/upload" method="POST" enctype="multipart/form-data">
-            <input type="file" name="pcap_file" accept=".pcap,.pcapng" required>
-            <br>
-            <button type="submit">Start Analysis</button>
-        </form>
+    <!-- Main Upload Section -->
+    <div class="main">
+        <div class="upload-box">
+            <h2>Upload PCAP File</h2>
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <input type="file" name="pcap_file" accept=".pcap,.pcapng" required>
+                <br>
+                <button type="submit">Start Analysis</button>
+            </form>
+        </div>
     </div>
+
 </div>
 
 </body>

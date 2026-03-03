@@ -1,88 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NetPeek</title>
-
-<style>
-:root{
-  --bg:#0f172a;
-  --card:#1e293b;
-  --accent:#3b82f6;
-  --text:#e2e8f0;
-  --muted:#64748b;
-}
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}
-body{
-  background:var(--bg);
-  color:var(--text);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  height:100vh;
-}
-.container{
-  width:100%;
-  max-width:500px;
-  text-align:center;
-}
-h1{
-  font-weight:600;
-  margin-bottom:10px;
-}
-p{
-  color:var(--muted);
-  font-size:14px;
-  margin-bottom:30px;
-}
-.card{
-  background:var(--card);
-  padding:40px;
-  border-radius:12px;
-}
-button{
-  background:var(--accent);
-  border:none;
-  padding:12px 20px;
-  color:white;
-  border-radius:6px;
-  cursor:pointer;
-  font-size:14px;
-}
-button:hover{opacity:.9}
-.file-name{
-  margin-top:15px;
-  font-size:13px;
-  color:var(--muted);
-}
-input{display:none}
-</style>
+    <title>NetPeek</title>
+    <style>
+        body{
+            margin:0;
+            font-family: Arial, sans-serif;
+            background:#f4f6f8;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+        .card{
+            background:#fff;
+            padding:30px;
+            width:320px;
+            text-align:center;
+            border-radius:8px;
+            box-shadow:0 4px 10px rgba(0,0,0,0.08);
+        }
+        h2{ margin-bottom:20px; }
+        input{
+            margin:15px 0;
+        }
+        button{
+            padding:10px 20px;
+            border:none;
+            background:#111;
+            color:#fff;
+            cursor:pointer;
+            border-radius:4px;
+        }
+        button:hover{
+            opacity:0.85;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
-  <h1>NetPeek</h1>
-  <p>Minimal PCAP Analysis Interface</p>
-
-  <div class="card">
-    <button onclick="document.getElementById('file').click()">
-      Upload PCAP File
-    </button>
-    <input type="file" id="file" accept=".pcap,.pcapng" onchange="showFile(this)">
-    <div class="file-name" id="fileName"></div>
-  </div>
+<div class="card">
+    <h2>NetPeek Analyzer</h2>
+    <input type="file" id="pcapFile">
+    <br>
+    <button onclick="startScan()">Start Scan</button>
+    <p id="status"></p>
 </div>
 
 <script>
-function showFile(input){
-  const file = input.files[0];
-  if(file){
-    document.getElementById('fileName').innerText =
-      "Selected: " + file.name;
-  }
-}
+    function startScan(){
+        const file = document.getElementById("pcapFile").files[0];
+        const status = document.getElementById("status");
+
+        if(!file){
+            status.innerText = "Please upload a PCAP file.";
+            return;
+        }
+
+        status.innerText = "Scanning " + file.name + "...";
+    }
 </script>
 
 </body>
